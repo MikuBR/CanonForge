@@ -1,0 +1,20 @@
+Task 3: Persistence — COMPLETED
+
+Acceptance criteria verified:
+- Table creation works; inspect shows tables: work, source, claim, evidence ✓
+- CRUD round-trip: create_work -> get_work -> list_works ✓
+- create_source, create_claim (with status persisted as pt-BR), create_evidence ✓
+- FK enforcement: inserting a Claim with unknown source_id raises IntegrityError (requires PRAGMA foreign_keys=ON, enabled in make_engine) ✓
+- ruff check → 0 errors ✓
+
+Key learnings:
+- SQLite does NOT enforce foreign keys by default. Added a connect event listener
+  in make_engine() that runs `PRAGMA foreign_keys=ON` per connection.
+- SQLAlchemy engine.url does not compare equal to a plain string; use str(engine.url).
+- UUIDs stored as str(36) in SQLite; enums stored as pt-BR string values for
+  human-readable inspection.
+
+Files created:
+- src/canonforge/db.py (Base, engine factory with FK pragma, session factory,
+  init_db, ORM models WorkORM/SourceORM/ClaimORM/EvidenceORM)
+- src/canonforge/repository.py (create/get/list CRUD for Work/Source/Claim/Evidence + update_claim)

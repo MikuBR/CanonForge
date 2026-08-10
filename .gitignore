@@ -1,0 +1,49 @@
+# Secrets and environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Databases (SQLite for v0.1)
+*.db
+*.sqlite
+*.sqlite3
+
+# Test / lint caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+*.egg
+
+# Agent instruction files — local only, NOT committed
+AGENTS.md
+CLAUDE.md
+.cursorrules
+opencode.json
+opencode.jsonc
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# CodeGraph index — machine-local
+.codegraph/

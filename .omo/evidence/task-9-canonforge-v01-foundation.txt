@@ -1,0 +1,21 @@
+Task 9: AGENTS.md local + invariância checks + final v0.1 scope validation — COMPLETED
+
+Acceptance criteria verified:
+- AGENTS.md exists at repo root (6.3KB, pt-BR) ✓
+- git check-ignore AGENTS.md → exit 0 (ignored) ✓
+- git status --porcelain does NOT list AGENTS.md as untracked ✓
+- git ls-files | grep -i agents → empty (no agent-instruction files committed) ✓
+
+Invariant checks (README.md:474-496, 690-733, 779-798):
+- (b) No hard-coded AI provider: only occurrence of OpenAI/Anthropic is the docstring in
+  providers.py stating real adapters are v0.2+ work; registry is name-based with NoopProvider ✓
+- (d) No secrets/API keys in src/, tests/, pyproject.toml, .env.example, .github/ (grep ok) ✓
+- (f) Absence of evidence → NÃO CONFIRMADO (never DESMENTIDO) + contradiction-preservation
+  tests pass (2 passed) ✓
+- (e) No v0.2+ modules (researcher/extractor/knowledge_graph/timeline/analysis/dossier/
+  learning/quiz), no frontend/ dir ✓ — scope v0.1 Foundation respected
+
+Files created:
+- AGENTS.md (pt-BR, gitignored per user constraint): states current v0.1 Foundation status,
+  canonical taxonomy vocabulary, domain invariants, code architecture with known gotchas
+  (FK pragma, engine-at-import, Typer/rich error panels, immediate flush), language rules

@@ -1,0 +1,30 @@
+Task 7: Full Pytest suite — COMPLETED
+
+Acceptance criteria verified:
+- .venv/bin/pytest . -v → 44 passed, 0 failed, 0 errors ✓
+- .venv/bin/python -m ruff check src tests → All checks passed (0 errors) ✓
+- QA independence: pytest run with OPENAI_API_KEY/ANTHROPIC_API_KEY unset → still 44 passed
+  (proves no dependency on external services/API keys/network) ✓
+
+Test files created (tests/):
+- tests/test_taxonomy.py — exact pt-BR labels for all taxonomy enums (README.md:87-111);
+  NÃO CONFIRMADO ≠ DESMENTIDO; unknown enum value raises
+- tests/test_models.py — Pydantic validation: required fields (Work.title, Claim.text,
+  Evidence.content+supports), confidence within [0,1], Source default type PRIMARIA,
+  Claim default status NÃO CONFIRMADO
+- tests/test_db.py — SQLAlchemy: table creation (work/source/claim/evidence), CRUD
+  round-trips, FK enforcement for Claim with unknown source_id (IntegrityError)
+- tests/test_providers.py — NoopProvider, registry default=noop, KeyError for unknown
+  provider, custom provider registration
+- tests/test_cli.py — CliRunner: --help lists all commands, init creates DB, classify
+  with unknown claim → exit != 0 + pt-BR error "não encontrada"
+- (classifier tests already at src/canonforge/test_classifier.py from Task 5 TDD)
+
+Test-changed learnings (bugs were in tests, not implementation):
+1. cli.init_db() uses the module-level engine whose relative sqlite URL resolves at
+   import time — chdir after import doesn't redirect it; tests must monkeypatch
+   cli_mod.init_db + SessionLocal to a tmp-path engine.
+2. Typer's rich error panel wraps text with box-drawing chars — assert on a single
+   word ("encontrada") not a multi-word phrase.
+3. repository.create_claim() flushes immediately → IntegrityError raised at flush,
+   so pytest.raises must wrap both create_claim and commit.

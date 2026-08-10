@@ -1,0 +1,16 @@
+Task 8: CI GitHub Actions — COMPLETED
+
+Acceptance criteria verified:
+- YAML parse: python -c "import yaml,pathlib; yaml.safe_load(...)" → OK (YAML válido) ✓
+- Workflow contém passos: pip install -e ".[dev]", pytest ., ruff check src tests ✓
+- grep -r "secrets\." .github/ → nenhum match (exit 1) ✓
+
+Files created:
+- .github/workflows/ci.yml — trigger push + pull_request em main; job test:
+  ubuntu-latest, Python 3.12 (matrix), actions/checkout@v4, actions/setup-python@v5,
+  pip install -e ".[dev]", ruff check src tests, pytest .
+
+Constraints honored:
+- No secrets/credentials in workflow ✓
+- No external integration tests ✓
+- No real service testing ✓

@@ -1,0 +1,26 @@
+Task 5: CanonClassifier (TDD) — COMPLETED
+
+Acceptance criteria verified:
+- .venv/bin/pytest src/canonforge/test_classifier.py -v → 10/10 passed ✓
+- Includes rules: sem-evidência => NÃO CONFIRMADO (confidence 0.0, never DESMENTIDO);
+  fonte primária + evidência => CANON(Primário) conf>=0.9;
+  fonte complementar => CANON(Complementar);
+  interpretação rotulada => INTERPRETAÇÃO;
+  teoria/headcanon => FANDOM;
+  contradição => CONTRADITÓRIO com AMBOS claims preservados + resolution_note com prioridade à fonte primária;
+  claim sem fonte na lista => ValueError (Evidence First). ✓
+- ruff check src/ tests/ → 0 errors ✓
+
+Deviation from first implementation attempt (4 of 10 failed):
+- Rule order fixed: contradiction first, then explicit fandom/interpretation labels,
+  then absence-of-evidence, then canon. Fandom/interpretation labels are a property
+  of the claim (README.md:101-105) and must win over "no evidence".
+- Complementary sources with supporting evidence classify as CANON(Complementar),
+  NOT interpretation (interpretation requires an explicit interpretation marker).
+- Test bug fixed: contradiction test now uses the SAME work_id for both claims
+  (different works were never compared).
+
+Files created:
+- src/canonforge/test_classifier.py (10 tests encoding README domain rules — written FIRST, TDD)
+- src/canonforge/classifier.py (CanonClassifier rule-based; confidence bands 1.0/0.9/0.7/0.4/0.0
+  from README.md:439-471; resolution_note documents primary-source priority README.md:292-301)

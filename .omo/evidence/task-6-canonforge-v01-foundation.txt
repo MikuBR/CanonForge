@@ -1,0 +1,28 @@
+Task 6: Initial CLI (Typer) — COMPLETED
+
+Acceptance criteria verified:
+- canonforge --help lists commands: init, work, source, claim, evidence, classify ✓
+- canonforge init creates the SQLite DB ✓
+- Full flow work add -> source add -> claim add -> evidence add -> classify runs
+  end-to-end without error and prints pt-BR status ✓
+  (Result: Status: CANON (Primário), Confiança: 0.90 — correct for primary source + supporting evidence)
+- Failure case: canonforge classify --claim-id <unknown> prints friendly pt-BR error,
+  exit code 2 ✓
+- ruff check src/ tests/ → 0 errors ✓
+
+Notes:
+- CLI uses Typer command GROUPS (work add / source add / claim add / evidence add) per
+  the plan's interface spec; Typer's default would be work-add.
+- ruff B008 (typer.Option in defaults) silenced via
+  [tool.ruff.lint.flake8-bugbear] extend-immutable-calls = ["typer.Option", "typer.Argument"]
+  — this is the idiomatic Typer pattern.
+- --supports is a boolean flag (use bare --supports, not "--supports True").
+
+Files created:
+- src/canonforge/cli.py (init, work add, source add, claim add, evidence add, classify,
+  entry point canonforge configured in pyproject.toml)
+
+Constraints honored:
+- No v0.2+ commands (research, extraction, KG, learning, quiz) ✓
+- No real provider calls — classifier is rule-based ✓
+- CLI output in pt-BR with exact taxonomy labels ✓

@@ -1,0 +1,23 @@
+Task 1: Project skeleton — COMPLETED
+
+Acceptance criteria verified:
+- git ls-files (after commit) will contain pyproject.toml and .gitignore
+- git check-ignore AGENTS.md → returns 0 (ignored) ✓
+- git check-ignore .env → returns 0 (ignored) ✓
+- python -c "import tomllib; tomllib.load(open('pyproject.toml','rb'))" → no error ✓
+- python -m venv .venv && pip install -e ".[dev]" → success ✓
+- python -c "import canonforge; print(canonforge.__version__)" → prints "0.1.0-dev" ✓
+
+Files created:
+- pyproject.toml (setuptools build, deps: pydantic>=2, pydantic-settings, SQLAlchemy>=2, typer, dev: pytest, pytest-cov, ruff; entry point canonforge=canonforge.cli:app)
+- .gitignore (covers .env, venv/, __pycache__/, *.db, .pytest_cache/, .ruff_cache/, AGENTS.md, CLAUDE.md, .cursorrules, opencode.json, .codegraph/)
+- src/canonforge/__init__.py (__version__ = "0.1.0-dev")
+- src/canonforge/domain/__init__.py (empty)
+- tests/__init__.py (empty)
+- .env.example (placeholders for provider keys, CANONFORGE_DEFAULT_PROVIDER=noop, CANONFORGE_DB note)
+
+Constraints honored:
+- README.md NOT modified ✓
+- No FastAPI ✓
+- No frontend ✓
+- AGENTS.md gitignored (not committed) ✓

@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "canonforge"
+version = "0.1.0-dev"
+description = "Evidence-driven research, knowledge extraction and learning for fictional universes"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "MikuBR" }]
+keywords = ["canon", "fiction", "knowledge-graph", "evidence", "research"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "pydantic>=2.0",
+    "pydantic-settings>=2.0",
+    "SQLAlchemy>=2.0",
+    "typer>=0.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+]
+
+[project.scripts]
+canonforge = "canonforge.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.ruff.lint.flake8-bugbear]
+# typer.Option(...) / typer.Argument(...) as argument defaults is the
+# idiomatic Typer pattern, not a bug (B008).
+extend-immutable-calls = ["typer.Option", "typer.Argument"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests", "src"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"

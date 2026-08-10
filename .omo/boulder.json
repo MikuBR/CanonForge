@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "active_work_id": "canonforge-v01-foundation-3407a9b5",
+  "works": {
+    "canonforge-v01-foundation-3407a9b5": {
+      "work_id": "canonforge-v01-foundation-3407a9b5",
+      "active_plan": "/home/caue/Documentos/VSCODE/CanonForge/.omo/plans/canonforge-v01-foundation.md",
+      "plan_name": "canonforge-v01-foundation",
+      "status": "completed",
+      "started_at": "2026-08-09T23:13:44.356Z",
+      "updated_at": "2026-08-09T23:45:00.000Z",
+      "ended_at": "2026-08-09T23:45:00.000Z",
+      "elapsed_ms": 1875644,
+      "session_ids": [
+        "opencode:ses_0174522b9ffePWEBaDUrLTNr1L"
+      ],
+      "session_origins": {
+        "opencode:ses_0174522b9ffePWEBaDUrLTNr1L": "direct"
+      },
+      "agent": "atlas",
+      "task_sessions": {}
+    }
+  },
+  "active_plan": "/home/caue/Documentos/VSCODE/CanonForge/.omo/plans/canonforge-v01-foundation.md",
+  "started_at": "2026-08-09T23:13:44.356Z",
+  "status": "completed",
+  "updated_at": "2026-08-09T23:45:00.000Z",
+  "ended_at": "2026-08-09T23:45:00.000Z",
+  "elapsed_ms": 1875644,
+  "session_ids": [
+    "opencode:ses_0174522b9ffePWEBaDUrLTNr1L"
+  ],
+  "session_origins": {
+    "opencode:ses_0174522b9ffePWEBaDUrLTNr1L": "direct"
+  },
+  "plan_name": "canonforge-v01-foundation",
+  "task_sessions": {},
+  "agent": "atlas"
+}

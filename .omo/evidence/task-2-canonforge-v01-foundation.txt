@@ -1,0 +1,18 @@
+Task 2: Domain models — COMPLETED
+
+Acceptance criteria verified:
+- python -c "from canonforge.domain.taxonomy import ClaimStatus; assert ClaimStatus.NAO_CONFIRMADO.value=='NÃO CONFIRMADO'; assert ClaimStatus.DESMENTIDO.value=='DESMENTIDO'" → passes ✓
+- All models import without error ✓
+- CanonCategory.PRIMARIO.value == 'Primário' ✓
+- Interpretacao.FORTEMENTE_SUSTENTADA.value == 'Fortemente sustentada' ✓
+- Fandom.HEADCANON.value == 'Headcanon' ✓
+- ruff check src/canonforge/domain/ → 0 errors ✓
+
+Files created:
+- src/canonforge/domain/taxonomy.py (enums: ClaimStatus, CanonCategory, Interpretacao, Fandom, SourceType, ValidationStatus — all with exact pt-BR labels from README.md:87-111)
+- src/canonforge/domain/models.py (Pydantic v2: Work, Source, Claim, Evidence, ClassifiedClaim — with domain invariants encoded: traceability via origin_source_id, confidence as 0..1 evidence confidence, contradictions preserved via conflicting_claim_ids, NAO_CONFIRMADO default not DESMENTIDO)
+
+Constraints honored:
+- No binary true/false for status ✓
+- pt-BR exact labels preserved ✓
+- No fields outside README domain ✓

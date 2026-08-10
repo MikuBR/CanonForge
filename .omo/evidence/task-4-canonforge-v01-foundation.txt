@@ -1,0 +1,17 @@
+Task 4: Provider layer — COMPLETED
+
+Acceptance criteria verified:
+- python -c "from canonforge.providers import get_provider; p=get_provider('noop'); assert hasattr(p,'complete')" → OK ✓
+- python -c "from canonforge.config import Settings; s=Settings(); print(s.default_provider)" prints 'noop' without .env ✓
+- CANONFORGE_DEFAULT_PROVIDER='zzz' → get_provider('zzz') raises KeyError with clear pt-BR message ✓
+- git check-ignore .env → returns 0 (ignored) ✓
+- ruff check → 0 errors ✓
+
+Files created:
+- src/canonforge/config.py (pydantic-settings Settings: default_provider=noop, openai_api_key, anthropic_api_key, canonforge_db; reads .env)
+- src/canonforge/providers.py (AIProvider ABC with complete(); NoopProvider; _REGISTRY; register_provider(); get_provider() with loud KeyError; available_providers())
+
+Constraints honored:
+- No real OpenAI/Anthropic calls (v0.1 abstraction only) ✓
+- No hard-coded single provider; provider-agnostic registry ✓
+- No API keys committed (.env ignored, .env.example placeholder) ✓
