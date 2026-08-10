@@ -818,14 +818,14 @@ O objetivo é permitir que a comunidade contribua com:
 
 ## v0.1 — Foundation
 
-* [ ] Estrutura inicial do projeto
-* [ ] Configuração de providers
-* [ ] Modelo de Work
-* [ ] Modelo de Source
-* [ ] Modelo de Claim
-* [ ] Modelo de Evidence
-* [ ] Sistema básico de classificação
-* [ ] CLI inicial
+* [x] Estrutura inicial do projeto
+* [x] Configuração de providers
+* [x] Modelo de Work
+* [x] Modelo de Source
+* [x] Modelo de Claim
+* [x] Modelo de Evidence
+* [x] Sistema básico de classificação
+* [x] CLI inicial
 
 ## v0.2 — Research
 
@@ -924,8 +924,8 @@ Mas uma **infraestrutura de conhecimento verificável para universos ficcionais*
 # 📜 Status
 
 **Projeto:** CanonForge
-**Status:** 🟡 Concepção / Arquitetura
-**Versão:** 0.1.0-dev
+**Status:** 🟢 v0.1 Foundation — Concluído | 🟡 v0.2 Research — Em planejamento
+**Versão:** 0.1.0
 
 > The goal is not to know everything.
 >
